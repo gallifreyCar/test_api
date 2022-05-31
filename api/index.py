@@ -1,9 +1,12 @@
 from fastapi import FastAPI
 
 from pydantic import BaseModel
+
+
 class ItemModel(BaseModel):
-    name:str
-    id:int
+    name: str
+    id: int
+
 
 app = FastAPI(
     title="Vercel FastAPI template",
@@ -26,5 +29,15 @@ async def home(name: str, id):
 
 
 @app.post("/api/test2")
-async def home(item:ItemModel):  # POST参数是对象
+async def home(item: ItemModel):  # POST参数是对象
     return {"message": "接受到信息", "name": item.name, "id": item.id}
+
+
+data1 = {'id': 1, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.0/nightcar6.webp'}
+data2 = {'id': 2, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.0/nightcar7.webp'}
+imgdata: [data1, data2]
+
+
+@app.get("/api/slides")
+async def home():
+    return imgdata
