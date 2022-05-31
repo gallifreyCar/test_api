@@ -43,13 +43,13 @@ async def home():
     return {'data': imgdata}
 
 
-category = {{'id': 1, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
+category = [{'id': 1, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
             {'id': 1, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
             {'id': 1, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
             {'id': 1, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
             {'id': 1, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
-            {'id': 1, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
-            }
+            {'id': 1, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'}
+            ]
 
 
 @app.get("/api/categories")
