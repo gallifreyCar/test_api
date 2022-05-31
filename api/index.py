@@ -33,8 +33,8 @@ async def home(item: ItemModel):  # POST参数是对象
     return {"message": "接受到信息", "name": item.name, "id": item.id}
 
 
-data1 = {'id': 1, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.0/nightcar6.webp'}
-data2 = {'id': 2, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.0/nightcar7.webp'}
+data1 = {'id': 1, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'}
+data2 = {'id': 2, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local2.png'}
 imgdata = [data1, data2]
 
 
