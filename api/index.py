@@ -40,7 +40,7 @@ imgdata = [data1, data2]
 
 @app.get("/api/slides")
 async def home():
-    return {'data': imgdata}
+    return {imgdata}
 
 
 category = [{'id': 1, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
