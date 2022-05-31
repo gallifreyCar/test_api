@@ -54,4 +54,4 @@ category = [{'id': 1, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-ass
 
 @app.get("/api/categories")
 async def home():
-    return {'data': category}
+    return category
