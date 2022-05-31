@@ -9,11 +9,17 @@ app = FastAPI(
     redoc_url=None
 )
 
+
 @app.get('/api/hello')
 async def hello():
     return {'message': 'Hello world!!'}
 
 
 @app.get("/api/test")
-async def home(name:str, id):
-    return {"message": "接受到信息"} 
+async def home(name: str, id):
+    return {"message": "接受到信息"}
+
+
+@app.post("/api/test2")
+async def home(name: str, id):
+    return {"message": "接受到信息", "name": name, "id": id}
