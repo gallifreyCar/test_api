@@ -38,7 +38,12 @@ data2 = {'id': 2, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/loca
 imgdata = [data1, data2]
 
 
-
 @app.get("/api/slides")
 async def home():
     return {"data": imgdata}
+
+
+@app.get("/api/categories")
+async def home():
+    return {[{'id': 1, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
+             {'id': 2, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local2.png'}]}
