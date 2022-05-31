@@ -35,7 +35,8 @@ async def home(item: ItemModel):  # POST参数是对象
 
 data1 = {'id': 1, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.0/nightcar6.webp'}
 data2 = {'id': 2, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.0/nightcar7.webp'}
-imgdata: [data1, data2]
+imgdata = [data1, data2]
+
 
 
 @app.get("/api/slides")
