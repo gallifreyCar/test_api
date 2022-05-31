@@ -13,7 +13,10 @@ app = FastAPI(
 async def hello():
     return {'message': 'Hello world!!'}
 
-@app.get("/api/test")
-async def home(data):
-    return {"message": "接受到信息"}, data
+class BaseModel():
+    name:str
+    id:int
 
+@app.get("/api/test")
+async def home(data :BaseModel):
+    return {"message": "接受到信息"}, data
