@@ -16,4 +16,4 @@ async def hello():
 
 @app.get("/api/test")
 async def home(name:str, id:int):
-    return {"message": "接受到信息",id,int} 
+    return {"message": "接受到信息",id,name} 
