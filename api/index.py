@@ -42,13 +42,15 @@ async def home():
     return imgdata
 
 
-
-category = [{'id': 1, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
-            {'id': 2, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
-            {'id': 3, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
-            {'id': 4, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
-            {'id': 5, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
-            {'id': 6, 'name': '', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'}
+category = [{'id': 1, 'name': '美食', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.5/locallive/food.png'},
+            {'id': 2, 'name': '洗浴足疗', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.5/locallive/wash.png'},
+            {'id': 3, 'name': '结婚', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.5/locallive/marry.png'},
+            {'id': 4, 'name': '卡拉OK', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.5/locallive/sing.png'},
+            {'id': 5, 'name': '找工作', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.5/locallive/work.png'},
+            {'id': 6, 'name': '辅导班', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.5/locallive/study.png'},
+            {'id': 7, 'name': '汽车保养', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.5/locallive/car.png'},
+            {'id': 8, 'name': '租房', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.5/locallive/house.png'},
+            {'id': 9, 'name': '装修', 'url': 'https://npm.elemecdn.com/gallifrey-assets@1.0.5/locallive/replay.png'}
             ]
 
 
