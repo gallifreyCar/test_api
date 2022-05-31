@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from model import ItemModel
 
 app = FastAPI(
     title="Vercel FastAPI template",
@@ -21,5 +22,5 @@ async def home(name: str, id):
 
 
 @app.post("/api/test2")
-async def home(name: str, id):
-    return {"message": "接受到信息", "name": name, "id": id}
+async def home(item:ItemModel):  # POST参数是对象
+    return {"message": "接受到信息", "name": item.name, "id": item.id}
