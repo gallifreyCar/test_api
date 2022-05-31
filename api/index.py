@@ -25,7 +25,7 @@ async def hello():
 
 @app.get("/api/test")
 async def home(name: str, id: int):
-    return {"message": "接受到信息","name": name, "id": id}
+    return {"message": "接受到信息", "name": name, "id": id}
 
 
 @app.post("/api/test2")
@@ -40,4 +40,4 @@ imgdata: [data1, data2]
 
 @app.get("/api/slides")
 async def home():
-    return imgdata
+    return {"data": imgdata}
