@@ -1,5 +1,9 @@
 from fastapi import FastAPI
-from model import ItemModel
+
+from pydantic import BaseModel
+class ItemModel(BaseModel):
+    name:str
+    id:int
 
 app = FastAPI(
     title="Vercel FastAPI template",
