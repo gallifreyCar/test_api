@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+import random
 from pydantic import BaseModel
 
 
@@ -57,3 +58,15 @@ category = [{'id': 1, 'name': '美食', 'url': 'https://npm.elemecdn.com/gallifr
 @app.get("/api/categories")
 async def home():
     return category
+
+
+color = []
+colorAll = []
+for colornum in range(0, 10):
+    color = [random.randrange(0, 255), random.randrange(0, 255), random.randrange(0, 255)]
+    colorAll.append(color)
+    print(colorAll)
+
+@app.get("/api/color")
+async def getColor():
+    return colorAll
