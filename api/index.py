@@ -60,18 +60,20 @@ async def home():
     return category
 
 
-colorAll = []
-for colornum in range(0, 10):
-    r = random.randrange(0, 255)
-    g = random.randrange(0, 255)
-    b = random.randrange(0, 255)
-    color = str(str(r) + ',' + str(g)+','+str(b))
 
-    colorAll.append(color)
-    # colorAll.append({str(r), str(g), str(b)})
-    print(colorAll)
 
 
 @app.get("/api/color")
 async def getColor():
-    return colorAll
+    colorAll = []
+    for colornum in range(0, 10):
+        r = random.randrange(0, 255)
+        g = random.randrange(0, 255)
+        b = random.randrange(0, 255)
+        color = str(str(r) + ',' + str(g) + ',' + str(b))
+
+        colorAll.append(color)
+        # colorAll.append({str(r), str(g), str(b)})
+        print(colorAll)
+
+    return {"data":colorAll}
