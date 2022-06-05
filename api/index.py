@@ -139,8 +139,8 @@ class User(Base):
     elec = Column(String(255))
 
     # 构造函数
-    def __init__(self, speed, elec):
-        self.id = self.id + 1
+    def __init__(self, id, speed, elec):
+        self.id = id
         self.speed = speed
         self.elec = elec
 
@@ -154,6 +154,7 @@ class User(Base):
 
 # 定义数据模型
 class CreatUser(BaseModel):
+    id:int
     speed: str
     elec: str
 
@@ -166,7 +167,7 @@ class CreatUser(BaseModel):
 async def InserUser(data: CreatUser):
     try:
         # 添加数据
-        dataNew = User(speed=data.speed, elec=data.elec)
+        dataNew = User(id=data.id,speed=data.speed, elec=data.elec)
         session.add(dataNew)
         session.commit()
         session.close()
