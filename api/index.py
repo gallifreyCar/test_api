@@ -36,8 +36,33 @@ async def home(item: ItemModel):  # POST参数是对象
 
 @app.get("/api/test3")
 async def home(data):  # POST参数是对象
-    f = open("\test_api\shuju", "w")
-    f.write(data)
+    import pymysql
+
+    # 打开数据库连接
+    db = pymysql.connect(host='192.168.1.9',
+                         user='root',
+                         password='root',
+                         database='ssm')
+
+    # 使用cursor()方法获取操作游标
+    cursor = db.cursor()
+
+    # SQL 插入语句
+    sql = "INSERT INTO car(elec, speed) \
+           VALUES ('%s', '%s')" % \
+          ("300", "299")
+    try:
+        # 执行sql语句
+        cursor.execute(sql)
+        # 执行sql语句
+        db.commit()
+    except:
+        # 发生错误时回滚
+        db.rollback()
+
+    # 关闭数据库连接
+    db.close()
+
     return {"message": "接受到信息", "data": data}
 
 
