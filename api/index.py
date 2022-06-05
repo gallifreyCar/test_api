@@ -112,8 +112,6 @@ async def getColor():
 
 pymysql.install_as_MySQLdb()
 
-
-
 # 配置数据库地址：数据库类型+数据库驱动名称://用户名:密码@机器地址:端口号/数据库名
 engine = create_engine("mysql+pymysql://root:root@192.168.1.9:3306/ssm", encoding='utf-8')
 # 把当前的引擎绑定给这个会话；
@@ -141,14 +139,15 @@ class User(Base):
     elec = Column(String(255))
 
     # 构造函数
-    def __init__(self, speed,elec):
-        self.id = self.id+1
+    def __init__(self, speed, elec):
+        self.id = self.id + 1
         self.speed = speed
-        self.elec=elec
+        self.elec = elec
 
     # 打印形式
     def __str__(self):
-        return "id:%s, speed:%s, elec:%s" % (str(self.id), self.speed,self.elec)
+        return "id:%s, speed:%s, elec:%s" % (str(self.id), self.speed, self.elec)
+
 
 # 在数据库中生成表
 # Base.metadata.create_all(bind=engine)
@@ -156,12 +155,10 @@ class User(Base):
 # 定义数据模型
 class CreatUser(BaseModel):
     speed: str
-    elec:str
+    elec: str
 
     def __str__(self):
-        return "id：%s, speed：%s, elec: %s" % (str(self.id), self.speed,self.elec)
-
-
+        return "id：%s, speed：%s, elec: %s" % (str(self.id), self.speed, self.elec)
 
 
 ## 添加单个
@@ -169,17 +166,13 @@ class CreatUser(BaseModel):
 async def InserUser(data: CreatUser):
     try:
         # 添加数据
-        dataNew = User(speed=data.speed,elec=data.elec)
+        dataNew = User(speed=data.speed, elec=data.elec)
         session.add(dataNew)
         session.commit()
         session.close()
     except ArithmeticError:
         return {"code": "0002", "message": "数据库异常"}
     return {"code": "0000", "message": "添加成功"}
-
-
-
-
 
 
 @app.get("/api/test3")
