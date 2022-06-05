@@ -34,7 +34,7 @@ async def home(item: ItemModel):  # POST参数是对象
     return {"message": "接受到信息", "name": item.name, "id": item.id}
 
 
-@app.post("/api/test3")
+@app.get("/api/test3")
 async def home(data):  # POST参数是对象
     return {"message": "接受到信息", "data": data}
 
