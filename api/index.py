@@ -34,6 +34,11 @@ async def home(item: ItemModel):  # POST参数是对象
     return {"message": "接受到信息", "name": item.name, "id": item.id}
 
 
+@app.post("/api/test3")
+async def home(data):  # POST参数是对象
+    return {"message": "接受到信息", "data": data}
+
+
 imgdata = [{'id': 1, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
            {'id': 2, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local2.png'}]
 
@@ -60,9 +65,6 @@ async def home():
     return category
 
 
-
-
-
 @app.get("/api/color")
 async def getColor():
     colorAll = []
@@ -76,4 +78,4 @@ async def getColor():
         # colorAll.append({str(r), str(g), str(b)})
         print(colorAll)
 
-    return {"data":colorAll}
+    return {"data": colorAll}
