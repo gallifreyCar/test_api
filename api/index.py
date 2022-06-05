@@ -36,7 +36,7 @@ async def home(item: ItemModel):  # POST参数是对象
 
 @app.get("/api/test3")
 async def home(data):  # POST参数是对象
-    f = open("E:\HUMEN\test_api", "w")
+    f = open("\test_api\shuju", "w")
     f.write(data)
     return {"message": "接受到信息", "data": data}
 
