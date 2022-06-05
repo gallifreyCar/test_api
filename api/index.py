@@ -50,7 +50,7 @@ async def home(data):  # POST参数是对象
     # SQL 插入语句
     sql = "INSERT INTO car(elec, speed) \
            VALUES ('%s', '%s')" % \
-          ("300", "299")
+          (data.elec, data.speed)
     try:
         # 执行sql语句
         cursor.execute(sql)
