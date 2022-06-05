@@ -162,7 +162,7 @@ class CreatUser(BaseModel):
 
 
 ## 添加单个
-@app.get("/api/addInfo")
+@app.post("/api/addInfo")
 async def InserUser(data: CreatUser):
     try:
         # 添加数据
