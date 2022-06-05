@@ -35,7 +35,7 @@ async def home(item: ItemModel):  # POST参数是对象
 
 
 @app.get("/api/test3")
-async def home(data):  # POST参数是对象
+async def home(getelec,getspeed):  # POST参数是对象
     import pymysql
 
     # 打开数据库连接
@@ -50,7 +50,7 @@ async def home(data):  # POST参数是对象
     # SQL 插入语句
     sql = "INSERT INTO car(elec, speed) \
            VALUES ('%s', '%s')" % \
-          (data.elec, data.speed)
+          (getelec, getspeed)
     try:
         # 执行sql语句
         cursor.execute(sql)
@@ -63,7 +63,7 @@ async def home(data):  # POST参数是对象
     # 关闭数据库连接
     db.close()
 
-    return {"message": "接受到信息", "data": data}
+    return {"message": "接受到信息", "elec": getelec,"speed":getspeed}
 
 
 imgdata = [{'id': 1, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
