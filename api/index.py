@@ -37,11 +37,11 @@ async def home(item: ItemModel):  # POST参数是对象
 @app.get("/api/test3")
 async def home(getelec, getspeed):  # POST参数是对象
 
-    # # 打开数据库连接
-    # db = pymysql.connect(host='192.168.1.9',
-    #                      user='root',
-    #                      password='root',
-    #                      database='ssm')
+     # 打开数据库连接
+     db = pymysql.connect(host='192.168.1.9',
+                          user='root',
+                          password='root',
+                          database='ssm')
     #
     # # 使用cursor()方法获取操作游标
     # cursor = db.cursor()
