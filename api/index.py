@@ -43,13 +43,13 @@ async def home(getelec, getspeed):  # POST参数是对象
                           password='root',
                           database='ssm')
     #
-    # # 使用cursor()方法获取操作游标
-    # cursor = db.cursor()
+     # 使用cursor()方法获取操作游标
+     cursor = db.cursor()
     #
-    # # SQL 插入语句
-    # sql = "INSERT INTO car(elec, speed) \
-    #        VALUES ('%s', '%s')" % \
-    #       (getelec, getspeed)
+     # SQL 插入语句
+     sql = "INSERT INTO car(elec, speed) \
+            VALUES ('%s', '%s')" % \
+           (getelec, getspeed)
     # try:
     #     # 执行sql语句
     #     cursor.execute(sql)
