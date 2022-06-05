@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 import pymysql
 import random
@@ -113,7 +114,7 @@ async def getColor():
 pymysql.install_as_MySQLdb()
 
 # 配置数据库地址：数据库类型+数据库驱动名称://用户名:密码@机器地址:端口号/数据库名
-engine = create_engine("mysql+pymysql://root:root@192.168.1.9:3306/ssm", encoding='utf-8')
+engine = create_engine("mysql+pymysql://root:rootroot@101.43.65.22:3306/Ccar", encoding='utf-8')
 # 把当前的引擎绑定给这个会话；
 # autocommit：是否自动提交 autoflush：是否自动刷新并加载数据库 bind：绑定数据库引擎
 Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -195,3 +196,6 @@ async def InserUser(mid, mspeed, melec):
 async def home(getelec, getspeed):  # POST参数是对象
     # dbinsert(getelec, getspeed)
     return {"message": "接受到信息", "elec": getelec, "speed": getspeed}
+
+# if __name__ == '__main__':
+#     uvicorn.run(app='index:app', host='0.0.0.0', port=8091, reload=True, debug=True)
