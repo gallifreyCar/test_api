@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-
+import pymysql
 import random
 from pydantic import BaseModel
 
@@ -35,8 +35,8 @@ async def home(item: ItemModel):  # POST参数是对象
 
 
 @app.get("/api/test3")
-async def home(getelec,getspeed):  # POST参数是对象
-    import pymysql
+async def home(getelec, getspeed):  # POST参数是对象
+
 
     # 打开数据库连接
     db = pymysql.connect(host='192.168.1.9',
@@ -63,7 +63,7 @@ async def home(getelec,getspeed):  # POST参数是对象
     # 关闭数据库连接
     db.close()
 
-    return {"message": "接受到信息", "elec": getelec,"speed":getspeed}
+    return {"message": "接受到信息", "elec": getelec, "speed": getspeed}
 
 
 imgdata = [{'id': 1, 'image': 'https://npm.elemecdn.com/gallifrey-assets@1.0.4/locallive/local1.png'},
