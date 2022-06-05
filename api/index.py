@@ -150,11 +150,12 @@ class User(Base):
 
 
 # 在数据库中生成表
-# Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
+
 
 # 定义数据模型
 class CreatUser(BaseModel):
-    id:int
+    id: int
     speed: str
     elec: str
 
@@ -167,13 +168,26 @@ class CreatUser(BaseModel):
 async def InserUser(data: CreatUser):
     try:
         # 添加数据
-        dataNew = User(id=data.id,speed=data.speed, elec=data.elec)
+        dataNew = User(id=data.id, speed=data.speed, elec=data.elec)
         session.add(dataNew)
         session.commit()
         session.close()
     except ArithmeticError:
         return {"code": "0002", "message": "数据库异常"}
     return {"code": "0000", "message": "添加成功"}
+
+@app.get("/api/Get/addInfo")
+async def InserUser(mid,mspeed,melec):
+    try:
+        # 添加数据
+        dataNew = User(id=mid, speed=mspeed, elec=melec)
+        session.add(dataNew)
+        session.commit()
+        session.close()
+    except ArithmeticError:
+        return {"code": "0002", "message": "数据库异常"}
+    return {"code": "0000", "message": "添加成功"}
+
 
 
 @app.get("/api/test3")
