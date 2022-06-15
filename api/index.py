@@ -214,11 +214,11 @@ async def home(getelec, getspeed):  # POST参数是对象
     # dbinsert(getelec, getspeed)
     return {"message": "接受到信息", "elec": getelec, "speed": getspeed}
 
-
-@app.get("/api/LoginMe")
-async def loginMe(code):
-    res = requests.get()
-    print(res.text)
+#
+# @app.get("/api/LoginMe")
+# async def loginMe(code):
+#     res = requests.get()
+#     print(res.text)
 
 #
 # if __name__ == '__main__':
