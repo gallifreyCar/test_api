@@ -1,3 +1,5 @@
+import uvicorn
+import requests
 from fastapi import FastAPI
 import pymysql
 import random
@@ -103,92 +105,108 @@ async def getColor():
         print(colorAll)
 
     return {"data": colorAll}
-
-
-## 连接数据库
-
-# 连接mysql数据库需要导入pymysql模块
-
-
-pymysql.install_as_MySQLdb()
-
-# 配置数据库地址：数据库类型+数据库驱动名称://用户名:密码@机器地址:端口号/数据库名
-engine = create_engine("mysql+pymysql://root:rootroot@101.43.65.22:3306/Ccar", encoding='utf-8')
-# 把当前的引擎绑定给这个会话；
-# autocommit：是否自动提交 autoflush：是否自动刷新并加载数据库 bind：绑定数据库引擎
-Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-# 实例化
-session = Session()
-
-# declarative_base类维持了一个从类到表的关系，通常一个应用使用一个Base实例，所有实体类都应该继承此类对象
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
-
-from sqlalchemy import Column, String, Integer
-
-
-# 创建数据库模型（定义表结构:表名称，字段名称以及字段类型）
-class User(Base):
-    # 定义表名
-    __tablename__ = 'carInfo'
-    # 定义字段
-    # primary_key=True 设置为主键
-    id = Column(Integer, primary_key=True)
-    speed = Column(String(255))
-    elec = Column(String(255))
-
-    # 构造函数
-    def __init__(self, id, speed, elec):
-        self.id = id
-        self.speed = speed
-        self.elec = elec
-
-    # 打印形式
-    def __str__(self):
-        return "id:%s, speed:%s, elec:%s" % (str(self.id), self.speed, self.elec)
-
-
-# 在数据库中生成表
-# Base.metadata.create_all(bind=engine)
-
-
-# 定义数据模型
-class CreatUser(BaseModel):
-    id: int
-    speed: str
-    elec: str
-
-    def __str__(self):
-        return "id：%s, speed：%s, elec: %s" % (str(self.id), self.speed, self.elec)
-
-
-## 添加单个
-@app.post("/api/addInfo")
-async def InserUser(data: CreatUser):
-    try:
-        # 添加数据
-        dataNew = User(id=data.id, speed=data.speed, elec=data.elec)
-        session.add(dataNew)
-        session.commit()
-        session.close()
-    except ArithmeticError:
-        return {"code": "0002", "message": "数据库异常"}
-    return {"code": "0000", "message": "添加成功"}
-
-
-@app.get("/api/Get/addInfo")
-async def InserUser(mid, mspeed, melec):
-    try:
-        # 添加数据
-        dataNew = User(id=mid, speed=mspeed, elec=melec)
-        session.add(dataNew)
-        session.commit()
-        session.close()
-    except ArithmeticError:
-        return {"code": "0002", "message": "数据库异常"}
-    return {"code": "0000", "message": "添加成功"}
-
+#
+#
+# ## 连接数据库
+#
+# # 连接mysql数据库需要导入pymysql模块
+#
+#
+# pymysql.install_as_MySQLdb()
+#
+# # 配置数据库地址：数据库类型+数据库驱动名称://用户名:密码@机器地址:端口号/数据库名
+# engine = create_engine("mysql+pymysql://root:rootroot@101.43.65.22:3306/Ccar", encoding='utf-8')
+# # 把当前的引擎绑定给这个会话；
+# # autocommit：是否自动提交 autoflush：是否自动刷新并加载数据库 bind：绑定数据库引擎
+# Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+# # 实例化
+# session = Session()
+#
+# # declarative_base类维持了一个从类到表的关系，通常一个应用使用一个Base实例，所有实体类都应该继承此类对象
+# from sqlalchemy.ext.declarative import declarative_base
+#
+# Base = declarative_base()
+#
+# from sqlalchemy import Column, String, Integer
+#
+#
+# # 创建数据库模型（定义表结构:表名称，字段名称以及字段类型）
+# class User(Base):
+#     # 定义表名
+#     __tablename__ = 'carInfo'
+#     # 定义字段
+#     # primary_key=True 设置为主键
+#     id = Column(Integer, primary_key=True)
+#     speed = Column(String(255))
+#     elec = Column(String(255))
+#
+#     # 构造函数
+#     def __init__(self, speed, elec):
+#         self.speed = speed
+#         self.elec = elec
+#
+#     # 打印形式
+#     def __str__(self):
+#         return "id:%s, speed:%s, elec:%s" % (str(self.id), self.speed, self.elec)
+#
+#
+# # 在数据库中生成表
+# # Base.metadata.create_all(bind=engine)
+#
+#
+# # 定义数据模型
+# class CreatUser(BaseModel):
+#     speed: str
+#     elec: str
+#
+#     def __str__(self):
+#         return "speed：%s, elec: %s" % (self.speed, self.elec)
+#
+#
+# ## 添加单个
+# @app.post("/api/Post/addInfo")
+# async def InserUser(data: CreatUser):
+#     try:
+#         # 添加数据
+#         dataNew = User(speed=data.speed, elec=data.elec)
+#         session.add(dataNew)
+#         session.commit()
+#         session.close()
+#     except ArithmeticError:
+#         return {"code": "0002", "message": "数据库异常"}
+#     return {"code": "0000", "message": "添加成功"}
+#
+#
+# from typing import List
+# ## 添加多个
+# @app.post("/api/Post/addInfoList")
+# async def addUserList(*, data: List[CreatUser]):
+#     try:
+#         # user是一个列表，每个内部元素均为CreatUser类型
+#         for u in data:
+#             # 自定义的数据模型可以用.访问属性
+#             dataUser = User(speed=u.speed, elec=u.elec)
+#             session.add(dataUser)
+#         session.commit()
+#         session.close()
+#     except ArithmeticError:
+#         return {"code": "0002", "message": "数据库异常"}
+#     return {"code": "0000", "message": "添加成功"}
+#
+#
+# @app.get("/api/Get/addInfo")
+# async def InserUser(speed, elec):
+#     try:
+#         # 添加数据
+#         dataNew = User(speed=speed, elec=elec)
+#         session.add(dataNew)
+#         session.commit()
+#         session.close()
+#     except ArithmeticError:
+#         return {"code": "0002", "message": "数据库异常"}
+#     return {"code": "0000", "message": "添加成功"}
+#
+#
 
 
 @app.get("/api/test3")
@@ -196,5 +214,12 @@ async def home(getelec, getspeed):  # POST参数是对象
     # dbinsert(getelec, getspeed)
     return {"message": "接受到信息", "elec": getelec, "speed": getspeed}
 
+
+@app.get("/api/LoginMe")
+async def loginMe(code):
+    res = requests.get()
+    print(res.text)
+
+#
 # if __name__ == '__main__':
 #     uvicorn.run(app='index:app', host='0.0.0.0', port=8091, reload=True, debug=True)
