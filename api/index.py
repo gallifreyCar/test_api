@@ -1,11 +1,11 @@
 # import uvicorn
 # import requests
 from fastapi import FastAPI
-# import pymysql
+import pymysql
 import random
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import sessionmaker
-# from pydantic import BaseModel
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from pydantic import BaseModel
 
 
 class ItemModel(BaseModel):
