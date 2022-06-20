@@ -1,9 +1,6 @@
 import requests
 from fastapi import FastAPI
-import pymysql
 import random
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 from pydantic import BaseModel
 
 
