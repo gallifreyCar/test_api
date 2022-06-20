@@ -1,4 +1,3 @@
-# import uvicorn
 import requests
 from fastapi import FastAPI
 import pymysql
